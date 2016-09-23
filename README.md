@@ -42,8 +42,6 @@ _Spec 8: Individual stylists can be deleted from the database._
 * _Input: Delete "Rebecca"_
 * _Output: Database stylists table no longer includes Stylist "Rebecca"_
 
-
-
 _Spec 9: Clients can be saved to the database._
 * _Input: Save new Client "Frank"_
 * _Output: Database stylists table now includes "Frank"_
@@ -56,7 +54,6 @@ _Spec 11: Client names can be updated in the database._
 * _Input: Change Client Frank's name to "Frankie"_
 * _Output: Client's database entry has been updated to "Frankie"_
 
-
 _Spec 12: A client's stylist ID can be retrieved._
 * _Input: Get ID_
 * _Output: 5_
@@ -64,7 +61,6 @@ _Spec 12: A client's stylist ID can be retrieved._
 _Spec 13: A Client's stylist ID can be changed._
 * _Input: Set stylist id to 7_
 * _Output: Database table now shows stylist ID as 7_
-
 
 _Spec 14: All Clients in the database can be deleted._
 * _Input: Delete all clients_

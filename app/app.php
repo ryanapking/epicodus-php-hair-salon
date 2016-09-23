@@ -26,16 +26,44 @@
         return $app->redirect('/');
     });
 
-    $app->delete('/stylists/stylist_id', function($stylist_id) use ($app) {
+    $app->delete('/stylists/{stylist_id}', function($stylist_id) use ($app) {
         $stylist = Stylist::find($stylist_id);
         $stylist->delete();
         return $app->redirect('/');
     });
 
-    $app->patch('/stylists/stylist_id', function($stylist_id) use ($app) {
+    $app->patch('/stylists/{stylist_id}', function($stylist_id) use ($app) {
         $stylist = Stylist::find($stylist_id);
         $new_name = $_POST['new_name'];
         $stylist->setName($new_name);
+        return $app->redirect('/');
+    });
+
+    $app->get('/clients/{client_id}', function($client_id) use ($app) {
+        $client = Client::find($client_id);
+        return $app['twig']->render('clients.html.twig', array('client' => $client));
+    });
+
+    $app->post('/clients', function() use ($app) {
+        $name = $_POST['client_name'];
+        $stylist_id = $_POST['stylist_id'];
+        $new_client = new Client($name, $stylist_id);
+        $new_client->save();
+        return $app->redirect('/');
+    });
+
+    $app->patch('/clients/{client_id}', function($client_id) use ($app) {
+        $client = Client::find($client_id);
+        $new_client_name = $_POST['new_client_name'];
+        $client->setName($new_client_name);
+        $new_stylist_id = $_POST['new_stylist_id'];
+        $client->setStylistId($new_stylist_id);
+        return $app->redirect('/');
+    });
+
+    $app->delete('/clients/{client_id}', function($client_id) use ($app) {
+        $client = Client::find($client_id);
+        $client->delete();
         return $app->redirect('/');
     });
 
