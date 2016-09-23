@@ -46,8 +46,6 @@ _Spec 9: Stylist objects can be updated in the date base._
 * _Input: Update_
 * _Output: Stylist's database entry has been updated with all changes_
 
-
-
 _Spec 10: Clients can be saved to the database._
 * _Input: Save new Client "Frank"_
 * _Output: Database stylists table now includes "Frank"_
@@ -95,6 +93,10 @@ _Spec 20: A list of clients can be found by Stylist ID._
 _Spec 21: A stylist's name can be returned from the client._
 * _Input: Get name of Jill's stylist_
 * _Output: "Anne"_
+
+_Spec 22: When a stylist is deleted, all clients associated with that stylist are also deleted._
+* _Input: Delete stylist_
+* _Output: Clients table has been cleared of all clients associated with that stylist ID_
 
 ## Setup/Installation Requirements
 

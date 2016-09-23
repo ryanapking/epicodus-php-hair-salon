@@ -19,6 +19,10 @@
         function delete()
         {
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->id};");
+            $clients = Client::findByStylistId($this->id);
+            foreach ($clients as $client) {
+                $client->delete();
+            }
         }
 
         function update()
@@ -54,7 +58,7 @@
                 }
             }
         }
-        
+
     //Getters and Setters
         function getName()
         {
