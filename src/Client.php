@@ -56,12 +56,13 @@
     //Getters and setters
         function getName()
         {
-
+            return $this->name;
         }
 
-        function setName()
+        function setName($new_name)
         {
-
+            $this->name = $new_name;
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function getStylistId()
