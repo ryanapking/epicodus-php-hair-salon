@@ -35,13 +35,6 @@
         return $app->redirect('/');
     });
 
-    $app->patch('/stylists/{stylist_id}', function($stylist_id) use ($app) {
-        $stylist = Stylist::find($stylist_id);
-        $new_name = $_POST['new_name'];
-        $stylist->setName($new_name);
-        return $app->redirect('/');
-    });
-
     $app->get('/clients/{stylist_id}', function($stylist_id) use ($app) {
         $clients = Client::findByStylistId($stylist_id);
         $stylist = Stylist::find($stylist_id);
@@ -67,6 +60,7 @@
         $client->setName($new_client_name);
         $new_stylist_id = $_POST['new_stylist_id'];
         $client->setStylistId($new_stylist_id);
+        $client->update();
         return $app->redirect('/client_edit/' . $client->getId());
     });
 
@@ -85,6 +79,7 @@
         $stylist = Stylist::find($stylist_id);
         $new_stylist_name = $_POST['new_stylist_name'];
         $stylist->setName($new_stylist_name);
+        $stylist->update();
         return $app->redirect('/stylist_edit/' . $stylist->getId());
     });
 

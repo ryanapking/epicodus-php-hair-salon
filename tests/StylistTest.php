@@ -70,6 +70,7 @@
 
         function test_deleteAll()
         {
+            // Arrange
             $input_name = "Rebecca";
             $test_Stylist = new Stylist($input_name);
             $test_Stylist->save();
@@ -85,6 +86,7 @@
 
         function test_getAll()
         {
+            // Arrange
             $input_name = "Rebecca";
             $test_Stylist = new Stylist($input_name);
             $test_Stylist->save();
@@ -99,6 +101,7 @@
 
         function test_find()
         {
+            // Arrange
             $input_name = "Rebecca";
             $test_Stylist = new Stylist($input_name);
             $test_Stylist->save();
@@ -114,6 +117,7 @@
 
         function test_delete()
         {
+            // Arrange
             $input_name = "Rebecca";
             $test_Stylist = new Stylist($input_name);
             $test_Stylist->save();
@@ -125,6 +129,21 @@
             $result = Stylist::getAll();
             // Assert
             $this->assertEquals([$test_Stylist2], $result);
+        }
+
+        function test_update()
+        {
+            // Arrange
+            $input_name = "Rebecca";
+            $test_Stylist = new Stylist($input_name);
+            $test_Stylist->save();
+            $new_name = "Rebeca";
+            $test_Stylist->setName($new_name);
+            // Act
+            $test_Stylist->update();
+            $result = Stylist::getAll();
+            // Assert
+            $this->assertEquals([$test_Stylist], $result);
         }
     }
  ?>

@@ -21,6 +21,11 @@
             $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->id};");
         }
 
+        function update()
+        {
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$this->name}' WHERE id = {$this->id};");
+        }
+
     //Static functions
         static function getAll()
         {
@@ -58,7 +63,6 @@
         function setName($new_name)
         {
             $this->name = $new_name;
-            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function getId()

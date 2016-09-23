@@ -57,7 +57,7 @@
             // Act
             $new_name = "Johnny B";
             $test_Client->setName($new_name);
-            $result = Client::find($test_Client->getId())->getName();
+            $result = $test_Client->getName();
             // Assert
             $this->assertEquals($new_name, $result);
         }
@@ -85,7 +85,7 @@
             // Act
             $new_stylist_id = 9;
             $test_Client->setStylistId($new_stylist_id);
-            $result = Client::find($test_Client->getId())->getStylistId();
+            $result = $test_Client->getStylistId();
             // Assert
             $this->assertEquals($new_stylist_id, $result);
         }
@@ -197,6 +197,24 @@
             $result = $test_Client->getStylistName();
             // Assert
             $this->assertEquals($stylist_name, $result);
+        }
+
+        function test_update()
+        {
+            // Arrange
+            $name = "John";
+            $stylist_id = 8;
+            $test_Client = new Client($name, $stylist_id);
+            $test_Client->save();
+            $new_name = "Johnny";
+            $new_stylist_id = 10;
+            $test_Client->setName($new_name);
+            $test_Client->setStylistId($new_stylist_id);
+            // Act
+            $test_Client->update();
+            $result = Client::getAll();
+            // Assert
+            $this->assertEquals([$test_Client], $result);
         }
     }
  ?>

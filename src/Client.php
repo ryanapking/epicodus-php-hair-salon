@@ -23,6 +23,11 @@
             $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->id};");
         }
 
+        function update()
+        {
+            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$this->name}', stylist_id = {$this->stylist_id} WHERE id = {$this->id};");
+        }
+
         function getStylistName()
         {
             $stylists = Stylist::getAll();
@@ -84,7 +89,6 @@
         function setName($new_name)
         {
             $this->name = $new_name;
-            $GLOBALS['DB']->exec("UPDATE clients SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function getStylistId()
@@ -95,7 +99,6 @@
         function setStylistId($new_stylist_id)
         {
             $this->stylist_id = $new_stylist_id;
-            $GLOBALS['DB']->exec("UPDATE clients SET stylist_id = {$this->stylist_id} WHERE id = {$this->id};");
         }
 
         function getId()
