@@ -18,57 +18,61 @@ _Spec 2: Stylist names can be retrieved._
 * _Input: Get name_
 * _Output: "Rebecca"_
 
-_Spec 3: Stylist names can be updated in the date base._
+_Spec 3: Stylist IDs can be retrieved._
+* _Input: Get ID
+* _Output: 7_
+
+_Spec 4: Stylist names can be updated in the date base._
 * _Input: Change Stylist Rebecca's name to "Rebeca"_
 * _Output: Stylist's database entry has been updated to "Rebeca"_
 
-_Spec 4: All stylists in the database can be deleted._
+_Spec 5: All stylists in the database can be deleted._
 * _Input: Delete all stylists_
 * _Output: Database stylists table now empty_
 
-_Spec 5: All stylists can be retrieved as Stylist objects._
+_Spec 6: All stylists can be retrieved as Stylist objects._
 * _Input: Get all stylists_
 * _Output: An array of all stylists currently saved to the database_
 
-_Spec 6: Individual stylists can be found by ID._
+_Spec 7: Individual stylists can be found by ID._
 * _Input: Find stylist 6_
 * _Output: "Rebecca"_
 
-_Spec 7: Individual stylists can be deleted from the database._
+_Spec 8: Individual stylists can be deleted from the database._
 * _Input: Delete "Rebecca"_
 * _Output: Database stylists table no longer includes Stylist "Rebecca"_
 
 
 
-_Spec 8: Clients can be saved to the database._
+_Spec 9: Clients can be saved to the database._
 * _Input: Save new Client "Frank"_
 * _Output: Database stylists table now includes "Frank"_
 
-_Spec 9: Client names can be retrieved._
+_Spec 10: Client names can be retrieved._
 * _Input: Get name_
 * _Output: "Frank"_
 
-_Spec 10: Client names can be updated in the database._
+_Spec 11: Client names can be updated in the database._
 * _Input: Change Client Frank's name to "Frankie"_
 * _Output: Client's database entry has been updated to "Frankie"_
 
-_Spec 11: All Clients in the database can be deleted._
+_Spec 12: All Clients in the database can be deleted._
 * _Input: Delete all clients
 * _Output: Database clients table now empty_
 
-_Spec 12: All clients can be retrieved as Client objects._
+_Spec 13: All clients can be retrieved as Client objects._
 * _Input: Get all clients
 * _Output: An array of all clients currently saved to the database_
 
-_Spec 13: Individual clients can be found by ID._
+_Spec 14: Individual clients can be found by ID._
 * _Input: Find client 3_
 * _Output: "Frank"_
 
-_Spec 14: Individual clients can be deleted from the database._
+_Spec 15: Individual clients can be deleted from the database._
 * _Input: Delete "Frank"_
 * _Output: Database clients table no longer includes Client "Frank"_
 
-_Spec 15: A list of clients can be found by Stylist ID._
+_Spec 16: A list of clients can be found by Stylist ID._
 * _Input: Find all clients of stylist 4._
 * _Return: Client "Frank" and Client "Jill"_
 

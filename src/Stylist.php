@@ -47,17 +47,18 @@
     //Getters and Setters
         function getName()
         {
-
+            return $this->name;
         }
 
-        function setName()
+        function setName($new_name)
         {
-
+            $this->name = $new_name;
+            $GLOBALS['DB']->exec("UPDATE stylists SET name = '{$this->name}' WHERE id = {$this->id};");
         }
 
         function getId()
         {
-
+            return $this->id;
         }
     }
  ?>
