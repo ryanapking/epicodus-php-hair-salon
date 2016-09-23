@@ -27,7 +27,7 @@
                 </select>
                 <br><br>
                 <button class='form-control btn btn-info' type='submit'>Update Client</button>
-                <a href='/clients/{{ client.getStylistId }}'>Return to clients</a>
+                <a href='/clients/{{ client.getStylistId }}'>Return to current stylist's clients</a>
             </form>
             <hr>
             <form class='form form-inline' action='/client_edit/{{ client.getId }}' method='post'>
