@@ -82,6 +82,10 @@ _Spec 18: A list of clients can be found by Stylist ID._
 * _Input: Find all clients of stylist 4._
 * _Return: Client "Frank" and Client "Jill"_
 
+_Spec 19: A stylist's name can be returned from the client._
+* _Input: Get name of Jill's stylist_
+* _Output: "Anne"_
+
 ## Setup/Installation Requirements
 
 _Dependencies: Silex, Twig, PHPUnit_

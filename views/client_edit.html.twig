@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Client Edit</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Awesome Hair Salon</h1>
+            <h4>Update client:</h4>
+            <hr>
+            <form class='form form-inline' action='/client_edit' method='post'>
+                <label>Current Name: {{ client.getName }}</label>
+                <br>
+                <label for='client_name'>New Name:</label>
+                <input class='form-control' type='text' id='client_name' name='client_name' placeholder="client's name" value={{ client.getName }}>
+                <br><br>
+                <label>Current Stylist:
+                    {% for stylist in stylists %}
+                        {% if stylist.getId == client.getStylistId %}
+                            {{ stylist.getName }}
+                        {% endif %}
+                    {% endfor %}
+                </label>
+                <br>
+                <label for'stylist_id'>New Stylist:</label>
+                <select name='stylist_id' id='stylist_id'>
+                    {% for stylist in stylists %}
+                        <option value={{ stylist.getId }}>{{ stylist.getName }}</option>
+                    {% endfor %}
+                </select>
+                <br><br>
+                <button class='form-control btn btn-info' type='submit'>Update Client</button>
+            </form>
+            <hr>
+            <form class='form form-inline' action='/client_edit/{{ client.getId }}' method='post'>
+                <input type='hidden' name='_method' value='delete'>
+                <button class='btn btn-danger' type='submit'>Delete Client</button>
+            </form>
+        </div>
+    </body>
+</html>

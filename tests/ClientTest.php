@@ -182,5 +182,21 @@
             // Assert
             $this->assertEquals([$test_Client2, $test_Client3], $result);
         }
+
+        function test_getStylistName()
+        {
+            // Arrange
+            $stylist_name = "Anne";
+            $test_Stylist = new Stylist($stylist_name);
+            $test_Stylist->save();
+            $stylist_id = $test_Stylist->getId();
+            $client_name = "Frank";
+            $test_Client = new Client($client_name, $stylist_id);
+            $test_Client->save();
+            // Act
+            $result = $test_Client->getStylistName();
+            // Assert
+            $this->assertEquals($stylist_name, $result);
+        }
     }
  ?>

@@ -11,6 +11,9 @@
 
     $app = new Silex\Application();
 
+    use Symfony\Component\HttpFoundation\Request;
+    Request::enableHttpMethodParameterOverride();
+
     $app->register(new Silex\Provider\TwigServiceProvider(), array('twig.path' => __DIR__.'/../views'));
 
     $app['debug'] = true;
@@ -45,23 +48,24 @@
         return $app['twig']->render('clients.html.twig', array('clients' => $clients, 'stylist' => $stylist));
     });
 
-
-
-
-
-    $app->get('/client_edit/{client_id}', function($client_id) use ($app) {
-        $client = Client::find($client_id);
-        return $app['twig']->render('client_edit.html.twig', array('client' => $client));
-    });
-
-    $app->post('/client_edit/{stylist_id}', function($stylist_id) use ($app) {
+    $app->post('/clients/{stylist_id}', function($stylist_id) use ($app) {
         $name = $_POST['client_name'];
         $new_client = new Client($name, $stylist_id);
         $new_client->save();
         return $app->redirect('/clients/' . $stylist_id);
     });
 
-    $app->patch('/clients/{client_id}', function($client_id) use ($app) {
+
+
+
+
+    $app->get('/client_edit/{client_id}', function($client_id) use ($app) {
+        $client = Client::find($client_id);
+        $stylists = Stylist::getAll();
+        return $app['twig']->render('client_edit.html.twig', array('client' => $client, 'stylists' => $stylists));
+    });
+
+    $app->patch('/client_edit/{client_id}', function($client_id) use ($app) {
         $client = Client::find($client_id);
         $new_client_name = $_POST['new_client_name'];
         $client->setName($new_client_name);
@@ -70,10 +74,10 @@
         return $app->redirect('/');
     });
 
-    $app->delete('/clients/{client_id}', function($client_id) use ($app) {
+    $app->delete('/client_edit/{client_id}', function($client_id) use ($app) {
         $client = Client::find($client_id);
         $client->delete();
-        return $app->redirect('/');
+        return $app->redirect('/clients/' . $client->getStylistId());
     });
 
     return $app;

@@ -23,6 +23,16 @@
             $GLOBALS['DB']->exec("DELETE FROM clients WHERE id = {$this->id};");
         }
 
+        function getStylistName()
+        {
+            $stylists = Stylist::getAll();
+            foreach ($stylists as $stylist) {
+                if ($stylist->getId() == $this->stylist_id) {
+                    return $stylist->getName();
+                }
+            }
+        }
+
     //Static functions
         static function getAll()
         {
