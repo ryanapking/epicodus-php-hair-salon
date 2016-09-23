@@ -1,4 +1,4 @@
-# _Hair Salon
+# _Hair Salon_
 
 #### _App that uses a database to track stylists and their clients. 9/13/2016_
 

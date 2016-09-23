@@ -54,6 +54,7 @@
                 }
             }
         }
+        
     //Getters and Setters
         function getName()
         {
