@@ -18,7 +18,7 @@
 
         function delete()
         {
-
+            $GLOBALS['DB']->exec("DELETE FROM stylists WHERE id = {$this->id};");
         }
 
     //Static functions
@@ -40,9 +40,14 @@
             $GLOBALS['DB']->query("DELETE FROM stylists;");
         }
 
-        static function find()
+        static function find($search_id)
         {
-
+            $stylists = Stylist::getAll();
+            foreach ($stylists as $stylist) {
+                if ($stylist->getId() == $search_id) {
+                    return $stylist;
+                }
+            }
         }
     //Getters and Setters
         function getName()

@@ -67,5 +67,64 @@
             // Assert
             $this->assertEquals($id, $result);
         }
+
+        function test_deleteAll()
+        {
+            $input_name = "Rebecca";
+            $test_Stylist = new Stylist($input_name);
+            $test_Stylist->save();
+            $input_name2 = "Thomas";
+            $test_Stylist2 = new Stylist($input_name2);
+            $test_Stylist2->save();
+            // Act
+            Stylist::deleteAll();
+            $result = Stylist::getAll();
+            // Assert
+            $this->assertEquals([], $result);
+        }
+
+        function test_getAll()
+        {
+            $input_name = "Rebecca";
+            $test_Stylist = new Stylist($input_name);
+            $test_Stylist->save();
+            $input_name2 = "Thomas";
+            $test_Stylist2 = new Stylist($input_name2);
+            $test_Stylist2->save();
+            // Act
+            $result = Stylist::getAll();
+            // Assert
+            $this->assertEquals([$test_Stylist, $test_Stylist2], $result);
+        }
+
+        function test_find()
+        {
+            $input_name = "Rebecca";
+            $test_Stylist = new Stylist($input_name);
+            $test_Stylist->save();
+            $input_name2 = "Thomas";
+            $test_Stylist2 = new Stylist($input_name2);
+            $test_Stylist2->save();
+            $find_id = $GLOBALS['DB']->lastInsertId();
+            // Act
+            $result = Stylist::find($find_id);
+            // Assert
+            $this->assertEquals($test_Stylist2, $result);
+        }
+
+        function test_delete()
+        {
+            $input_name = "Rebecca";
+            $test_Stylist = new Stylist($input_name);
+            $test_Stylist->save();
+            $input_name2 = "Thomas";
+            $test_Stylist2 = new Stylist($input_name2);
+            $test_Stylist2->save();
+            // Act
+            $test_Stylist->delete();
+            $result = Stylist::getAll();
+            // Assert
+            $this->assertEquals([$test_Stylist2], $result);
+        }
     }
  ?>
