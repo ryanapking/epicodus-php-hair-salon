@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <link href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+        <title>Client Edit</title>
+    </head>
+    <body>
+        <div class='container'>
+            <h1>Awesome Hair Salon</h1>
+            <h4>Update stylist:</h4>
+            <hr>
+            <form class='form form-inline' action='/stylist_edit/{{ stylist.getId }}' method='post'>
+                <input type='hidden' name='_method' value='patch'>
+                <label>Current Stylist Name: {{ stylist.getName }}</label>
+                <br>
+                <label for='new_stylist_name'>New Stylist Name:</label>
+                <input class='form-control' type='text' id='new_stylist_name' name='new_stylist_name' placeholder="client's name" value={{ stylist.getName }}>
+                <br><br>
+                <button class='form-control btn btn-info' type='submit'>Update Stylist</button>
+                <a href='/'>Return to list of stylists</a>
+            </form>
+            <hr>
+            <form class='form form-inline' action='/stylist_edit/{{ stylist.getId }}' method='post'>
+                <input type='hidden' name='_method' value='delete'>
+                <button class='btn btn-danger' type='submit'>Delete Stylist</button>
+            </form>
+        </div>
+    </body>
+</html>

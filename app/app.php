@@ -55,10 +55,6 @@
         return $app->redirect('/clients/' . $stylist_id);
     });
 
-
-
-
-
     $app->get('/client_edit/{client_id}', function($client_id) use ($app) {
         $client = Client::find($client_id);
         $stylists = Stylist::getAll();
@@ -71,13 +67,31 @@
         $client->setName($new_client_name);
         $new_stylist_id = $_POST['new_stylist_id'];
         $client->setStylistId($new_stylist_id);
-        return $app->redirect('/');
+        return $app->redirect('/client_edit/' . $client->getId());
     });
 
     $app->delete('/client_edit/{client_id}', function($client_id) use ($app) {
         $client = Client::find($client_id);
         $client->delete();
         return $app->redirect('/clients/' . $client->getStylistId());
+    });
+
+    $app->get('/stylist_edit/{stylist_id}', function($stylist_id) use ($app) {
+        $stylist = Stylist::find($stylist_id);
+        return $app['twig']->render('stylist_edit.html.twig', array('stylist' => $stylist));
+    });
+
+    $app->patch('/stylist_edit/{stylist_id}', function($stylist_id) use ($app) {
+        $stylist = Stylist::find($stylist_id);
+        $new_stylist_name = $_POST['new_stylist_name'];
+        $stylist->setName($new_stylist_name);
+        return $app->redirect('/stylist_edit/' . $stylist->getId());
+    });
+
+    $app->delete('/stylist_edit/{stylist_id}', function($stylist_id) use ($app) {
+        $stylist = Stylist::find($stylist_id);
+        $stylist->delete();
+        return $app->redirect('/');
     });
 
     return $app;

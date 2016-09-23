@@ -19,6 +19,11 @@
                 <input class='form-control' type='text' name='client_name' placeholder="client's name">
                 <button class='form-control btn btn-info' type='submit'>Add Stylist</button>
             </form>
+            <br>
+            <p>Or</p>
+            <form action='/stylist_edit/{{ stylist.getId }}'>
+                <button type='submit' class='btn btn-warning'>Edit Current Stylist</button>
+            </form>
         </div>
     </body>
 </html>
