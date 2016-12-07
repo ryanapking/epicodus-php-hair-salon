@@ -8,6 +8,8 @@
 
 _An application for tracking stylists and their clients. Stylists are all displayed on a main page. Clicking on a stylist name brings up a list of that stylist's clients and an option to add a new client._
 
+_Project can be viewed [here](http://hair-salon.ryanapking.com/)._
+
 ## Specifications
 
 _Spec 1: Stylists can be saved to the database._
